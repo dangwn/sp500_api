@@ -5,13 +5,13 @@ services:
   - docker
 
 before_install:
-  - docker build -f ./dockerfile -t dangawne/Fdata_api .
+  - docker build -f ./dockerfile -t dangawne/spdata_api .
 
 before_deploy:
   - docker login --username "$DOCKERUSER" --password "$DOCKERPWD"
 
 deploy:
   provider: script
-  script: docker image push dangawne/Fdata_api
+  script: docker image push dangawne/spdata_api
   on:
     branch: main
