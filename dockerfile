@@ -2,8 +2,8 @@
 FROM dangawne/ubuntu_miniconda3x
 
 # Copy the source code into the docker container
-COPY ./model_api /model_api
+COPY ./app /app
 
 # Create the conda environment
-WORKDIR /model_api
-RUN conda env create --file ./env_flask.yml
+WORKDIR /app
+RUN conda env create --file ./envs/env_flask.yml
