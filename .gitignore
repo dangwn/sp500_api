@@ -1,0 +1,6 @@
+.vscode
+data
+__pycache__
+file_paths.yml
+.pytest_cache
+scratch.py
