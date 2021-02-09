@@ -24,7 +24,7 @@ app = Flask(__name__)
 def index():
     return 'Welcome to the API'
 
-@app.route('sp-data', methods=['POST'])
+@app.route('/sp-data', methods=['POST'])
 def get_sp_data():
     try:
         data = json.loads(request.data)
@@ -51,6 +51,5 @@ def get_sp_data():
     except:
         return error_msg('Something went wrong...')
     
-
 if __name__ == '__main__':
-    waitress.serve(app, host='0.0.0.0', port=6000)
+    waitress.serve(app, host='0.0.0.0', port=444)
