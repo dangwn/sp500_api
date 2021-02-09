@@ -58,15 +58,5 @@ def get_json(
         'currency' : data['chart']['result'][0]['meta']['currency'],
         'error'    : data['chart']['error']
     })
-    
-    
 
-
-
-if __name__ == '__main__':
-    data = json.loads(get_json(
-        'MSFT',
-        start = datetime.datetime(2021,1,1), end = datetime.datetime(2021,2,1)
-    ))
-    print(len(data['adjclose']))
     
