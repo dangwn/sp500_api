@@ -22,7 +22,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Welcome to the API'
+    return "It's up and running"
 
 @app.route('/sp-data', methods=['POST'])
 def get_sp_data():
