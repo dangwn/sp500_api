@@ -4,3 +4,4 @@ __pycache__
 file_paths.yml
 .pytest_cache
 scratch.py
+data.json
