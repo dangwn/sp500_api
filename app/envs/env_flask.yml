@@ -21,4 +21,6 @@ dependencies:
   - wheel=0.36.2
 #  - wincertstore=0.2
   - zlib=1.2.11
+  - matplotlib
+  - mpld3
 prefix: D:\anaconda3\envs\py37_temp
