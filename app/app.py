@@ -50,6 +50,12 @@ def get_sp_data():
 
     except:
         return error_msg('Something went wrong...')
+
+@app.route('/sp-graph', methods=['POST'])
+def get_sp_graph():
+
+
+    return
     
 if __name__ == '__main__':
     waitress.serve(app, host='0.0.0.0', port=444)
