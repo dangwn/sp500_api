@@ -21,9 +21,4 @@ def create_day_range(
         d += dt.timedelta(days=1)
     return dates
 
-if __name__ == '__main__':
-    start = dt.datetime(2019,1,21)
-    end = dt.datetime(2019,1,30)
-
-    print(create_day_range(start, end))
 
