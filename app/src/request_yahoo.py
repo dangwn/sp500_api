@@ -12,7 +12,7 @@ def request_yahoo(data : str) -> str:
     ticker = data.get('ticker', None)
     if ticker is None:
         return error_msg('Problem with loading ticker...')
-
+    
     start      = data.get('start', None)
     end        = data.get('end', None)
     proxy      = data.get('proxy', None)

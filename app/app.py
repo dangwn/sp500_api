@@ -41,6 +41,7 @@ def get_sp_data():
 def get_sp_graph():
     try:
         data = json.loads(request.data)
+        
         if data is None:
             return error_msg('Problem with loading request...')
 
@@ -49,8 +50,9 @@ def get_sp_graph():
         fig = make_figs.create_raw_plot(
             data = response_data.get('adjclose', None),
             ticker = data.get('ticker', None),
-            currency = response_data.get('currency', None)
-            # Add start and end points
+            currency = response_data.get('currency', None),
+            start = response_data.get('start', None),
+            end = response_data.get('end', None)
         )
 
         return json.dumps({'plot_html' : make_figs.plot_to_html(fig), 'error' : None})
