@@ -59,4 +59,4 @@ def get_json(
         'error'    : data['chart']['error']
     })
 
-    
+            

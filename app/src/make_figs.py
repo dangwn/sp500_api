@@ -33,7 +33,7 @@ def create_raw_plot(
 ):
     fig, ax = plt.subplots(figsize=(12,6))
     
-    ax.plot(data, color='green', linewidth='2.5')
+    ax.plot(data, color='green', linewidth='1.5')
     ax.set_ylabel('Adjusted Close Price')
 
     title = (f'{ticker.upper()} ' if ticker is not None else '') + (f'({currency})' if currency is not None else '')
