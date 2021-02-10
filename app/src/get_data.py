@@ -56,6 +56,7 @@ def get_json(
     return json.dumps({
         'adjclose' : data['chart']['result'][0]['indicators']['adjclose'][0]['adjclose'],
         'currency' : data['chart']['result'][0]['meta']['currency'],
+        'start'    : data['chart']['result'][0]['timestamp'][0],
+        'end'      : data['chart']['result'][0]['timestamp'][-1],
         'error'    : data['chart']['error']
     })
-
