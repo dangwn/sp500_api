@@ -31,8 +31,8 @@ def get_sp_data():
         if data == None:
             return error_msg('Problem with loading data...')
         
-        ticker = data.get('ticker', 'unknown_to_me')
-        if ticker == 'unknown_to_me':
+        ticker = data.get('ticker', None)
+        if ticker is None:
             return error_msg('Problem with loading ticker...')
 
         start      = data.get('start', None)
