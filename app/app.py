@@ -51,7 +51,7 @@ def get_sp_graph():
             currency = response_data.get('currency', None)
             # Add start and end points
         )
-        return json.dumps('plot_html' : make_figs.plot_to_html(fig), 'error' : None})
+        return json.dumps({'plot_html' : make_figs.plot_to_html(fig), 'error' : None})
 
 
     except:
