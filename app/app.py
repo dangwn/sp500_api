@@ -45,12 +45,14 @@ def get_sp_graph():
             return error_msg('Problem with loading request...')
 
         response_data = json.loads(request_yahoo(data))
+
         fig = make_figs.create_raw_plot(
             data = response_data.get('adjclose', None),
             ticker = data.get('ticker', None),
             currency = response_data.get('currency', None)
             # Add start and end points
         )
+
         return json.dumps({'plot_html' : make_figs.plot_to_html(fig), 'error' : None})
 
 

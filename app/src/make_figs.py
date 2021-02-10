@@ -35,6 +35,7 @@ def create_raw_plot(
     
     ax.plot(data, color='green', linewidth='1.5')
     ax.set_ylabel('Adjusted Close Price')
+    ax.grid()
 
     title = (f'{ticker.upper()} ' if ticker is not None else '') + (f'({currency})' if currency is not None else '')
     ax.set_title(title)
