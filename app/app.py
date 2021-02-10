@@ -28,7 +28,7 @@ def index():
 def get_sp_data():
     try:
         data = json.loads(request.data)
-        if data == None:
+        if data is None:
             return error_msg('Problem with loading data...')
         
         ticker = data.get('ticker', None)
