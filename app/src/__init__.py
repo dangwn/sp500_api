@@ -1,3 +1,5 @@
 __all__ = [
-    'get_data'
+    'get_data',
+    'make_figs',
+    'request_yahoo'
 ]
