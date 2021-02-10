@@ -37,14 +37,23 @@ def get_sp_data():
     except:
         return error_msg('Something went wrong...')
 
-@app.route('/sp-graph', methods=['GET','POST'])
+@app.route('/sp-graph', methods=['POST'])
 def get_sp_graph():
     try:
         data = json.loads(request.data)
         if data is None:
             return error_msg('Problem with loading request...')
 
-        response = request_yahoo(data)
+        response_data = json.loads(request_yahoo(data))
+        fig = make_figs.create_raw_plot(
+            data = response_data.get('adjclose', None),
+            ticker = data.get('ticker', None),
+            currency = response_data.get('currency', None)
+            # Add start and end points
+        )
+        return json.dumps('plot_html' : make_figs.plot_to_html(fig), 'error' : None})
+
+
     except:
         return error_msg('Something went wrong...')
     
