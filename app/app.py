@@ -3,11 +3,13 @@ Author: Dan Gawne
 Date: 2021-02-09
 '''
 
-from flask import Flask, request
+from flask import Flask, request, url_for
 import waitress
 import json
+import requests
 
-from src import get_data
+from src import make_figs
+from src.request_yahoo import request_yahoo
 
 #--------------------------------------------------------------------------------------------------
 # Error Message
@@ -29,33 +31,22 @@ def get_sp_data():
     try:
         data = json.loads(request.data)
         if data is None:
-            return error_msg('Problem with loading data...')
-        
-        ticker = data.get('ticker', None)
-        if ticker is None:
-            return error_msg('Problem with loading ticker...')
+            return error_msg('Problem with loading request...')
 
-        start      = data.get('start', None)
-        end        = data.get('end', None)
-        proxy      = data.get('proxy', None)
-        return_all = data.get('return_all', False)
-
-        return get_data.get_json(
-            ticker = ticker,
-            start = start,
-            end = end,
-            proxy = proxy,
-            return_all = return_all
-        )
-
+        return request_yahoo(data)
     except:
         return error_msg('Something went wrong...')
 
-@app.route('/sp-graph', methods=['POST'])
+@app.route('/sp-graph', methods=['GET','POST'])
 def get_sp_graph():
+    try:
+        data = json.loads(request.data)
+        if data is None:
+            return error_msg('Problem with loading request...')
 
-
-    return
+        response = request_yahoo(data)
+    except:
+        return error_msg('Something went wrong...')
     
 if __name__ == '__main__':
     waitress.serve(app, host='0.0.0.0', port=444)
