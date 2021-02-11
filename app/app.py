@@ -62,7 +62,8 @@ def get_sp_graph():
         return error_msg('Something went wrong...')
 
 @app.route('/prophet-graph', methods = ['POST'])
-def get_prophet_graph()
+def get_prophet_graph():
+    pass
 
 if __name__ == '__main__':
     waitress.serve(app, host='0.0.0.0', port=444)
