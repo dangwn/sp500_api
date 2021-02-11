@@ -41,7 +41,7 @@ def get_sp_data():
 def get_sp_graph():
     try:
         data = json.loads(request.data)
-        
+
         if data is None:
             return error_msg('Problem with loading request...')
 
@@ -60,6 +60,9 @@ def get_sp_graph():
 
     except:
         return error_msg('Something went wrong...')
-    
+
+@app.route('/prophet-graph', methods = ['POST'])
+def get_prophet_graph()
+
 if __name__ == '__main__':
     waitress.serve(app, host='0.0.0.0', port=444)
