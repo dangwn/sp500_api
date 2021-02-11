@@ -61,7 +61,7 @@ def get_sp_graph():
     except:
         return error_msg('Something went wrong...')
 
-@app.route('/prophet-graph', methods = ['POST'])
+@app.route('/arima-predict', methods = ['POST'])
 def get_prophet_graph():
     pass
 
