@@ -59,7 +59,7 @@ def create_arima_plot(
     data,
     ticker = None, currency = None,
     start = None, end = None,
-    num_future_days = 7
+    num_future_days = 14
 ):
     fig, ax = create_raw_plot(data[-30:], ticker, currency, start, end)
 

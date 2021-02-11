@@ -14,7 +14,7 @@ def arima_predictions(
 
     # Adjust for volitility
     log_price = np.log(data)
-    model = ARIMA(log_price,order=(0,1,0)).fit(disp = 0)
+    model = ARIMA(log_price,order=(3,1,0)).fit(disp = 0)
 
     y_hat = model.predict(
         len(data)+1, len(data) + num_future_days, typ='levels'
