@@ -23,4 +23,5 @@ dependencies:
   - zlib=1.2.11
   - matplotlib
   - mpld3
+  - statsmodels
 prefix: D:\anaconda3\envs\py37_temp
