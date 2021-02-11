@@ -23,6 +23,4 @@ dependencies:
   - zlib=1.2.11
   - matplotlib
   - mpld3
-  - pystan
-  - fbprophet=0.2
 prefix: D:\anaconda3\envs\py37_temp
