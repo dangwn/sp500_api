@@ -24,4 +24,5 @@ dependencies:
   - matplotlib
   - mpld3
   - statsmodels
+  - requests
 prefix: D:\anaconda3\envs\py37_temp
