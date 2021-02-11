@@ -47,7 +47,7 @@ def get_sp_graph():
 
         response_data = json.loads(request_yahoo(data))
 
-        fig = make_figs.create_raw_plot(
+        fig, _ = make_figs.create_raw_plot(
             data = response_data.get('adjclose', None),
             ticker = data.get('ticker', None),
             currency = response_data.get('currency', None),
@@ -57,13 +57,34 @@ def get_sp_graph():
 
         return json.dumps({'plot_html' : make_figs.plot_to_html(fig), 'error' : None})
 
-
     except:
         return error_msg('Something went wrong...')
 
-@app.route('/arima-predict', methods = ['POST'])
+@app.route('/arima-graph', methods = ['POST'])
 def get_prophet_graph():
-    pass
+    try:
+        data = json.loads(request.data)
+
+        if data is None:
+            return error_msg('Problem with loading request...')
+
+        response_data = json.loads(request_yahoo(data))
+        
+        print('\n\n --- \n\n')
+
+        fig, _ = make_figs.create_arima_plot(
+            data = response_data.get('adjclose', None),
+            ticker = data.get('ticker', None),
+            currency = response_data.get('currency', None),
+            start = response_data.get('start', None),
+            end = response_data.get('end', None)
+        )
+
+        return json.dumps({'plot_html' : make_figs.plot_to_html(fig), 'error' : None})
+        
+    except Exception as e:
+        print(e)
+        return error_msg('Something went wrong...')
 
 if __name__ == '__main__':
     waitress.serve(app, host='0.0.0.0', port=444)

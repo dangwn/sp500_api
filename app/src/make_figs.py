@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import mpld3
 import datetime as dt
 
+from . import arima_modelling
+
 def create_day_range(
     start : dt.datetime,
     end : dt.datetime
@@ -50,6 +52,29 @@ def create_raw_plot(
     title = (f'{ticker.upper()} ' if ticker is not None else '') + (f'({currency})' if currency is not None else '')
     ax.set_title(title)
 
+    return fig, ax
+
+
+def create_arima_plot(
+    data,
+    ticker = None, currency = None,
+    start = None, end = None,
+    num_future_days = 7
+):
+    fig, ax = create_raw_plot(data[-30:], ticker, currency, start, end)
+
+    preds = arima_modelling.arima_predictions(data, num_future_days=7)
+    
+    end_dt = dt.datetime.fromtimestamp(end)
+    new_dates = [end_dt]
+    while (len(new_dates) < len(preds)):
+        end_dt += dt.timedelta(days = 1)
+        new_dates.append(end_dt)
+
+
+    ax.plot(new_dates, preds, color = 'red', linewidth='3')
+
     
 
-    return fig
+    return fig, ax
+
